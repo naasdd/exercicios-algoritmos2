@@ -27,21 +27,34 @@ void criarDados()
     for (int i = 0; i < 2000; i++)
     {
         Gado temp;
-        temp.codigo = rand() % 5000;
-        temp.leite = rand() % 1000;
-        temp.alim = rand() % 1000;
 
-        temp.nasc.ano = rand() % 2025;
+        temp.codigo = rand() % 5000;
+        temp.leite = rand() % 100;
+        temp.alim = rand() % 100;
+
         do
         {
             temp.nasc.ano = rand() % 2025;
-        } while (temp.nasc.ano <= 2010);
+            temp.nasc.mes = rand() % 12;
+        } while (temp.nasc.ano <= 2010 || temp.nasc.mes == 0);
 
-        temp.nasc.mes = rand() % 12;
+        meu_arquivo << temp.codigo << ",";
+        meu_arquivo << temp.leite << ",";
+        meu_arquivo << temp.alim << ",";
+        meu_arquivo << temp.nasc.ano << ",";
+        meu_arquivo << temp.nasc.mes << ",\n";
 
-        
+        cout << temp.codigo << ",";
+        cout << temp.leite << ",";
+        cout << temp.alim << ",";
+        cout << temp.nasc.ano << ",";
+        cout << temp.nasc.mes << ",";
+        cout << endl;
+
         arrayGados[i] = temp;
     }
+    meu_arquivo.close();
+    cout << "Dados gerados e gravados em ex6.txt";
 }
 
 void lerBaseDados()
@@ -51,7 +64,7 @@ void lerBaseDados()
 int main()
 {
     srand(time(NULL));
-    cout << "-- Início do programa";
+    cout << "-- Início do programa -- \n";
 
     int opcao;
     do
@@ -69,7 +82,7 @@ int main()
         switch (opcao)
         {
         case 1:
-
+            criarDados();
             break;
         case 2:
 
