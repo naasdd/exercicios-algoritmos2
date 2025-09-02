@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <time.h>
 
 using namespace std;
 
@@ -16,16 +18,39 @@ struct Gado
     bool abate;
 };
 
+void criarDados()
+{
+    ofstream meu_arquivo;
+    meu_arquivo.open("ex6.txt");
+    Gado arrayGados[2000];
 
-void lerBaseDados(){
+    for (int i = 0; i < 2000; i++)
+    {
+        Gado temp;
+        temp.codigo = rand() % 5000;
+        temp.leite = rand() % 1000;
+        temp.alim = rand() % 1000;
 
-    
+        temp.nasc.ano = rand() % 2025;
+        do
+        {
+            temp.nasc.ano = rand() % 2025;
+        } while (temp.nasc.ano <= 2010);
+
+        temp.nasc.mes = rand() % 12;
+
+        
+        arrayGados[i] = temp;
+    }
 }
 
-
+void lerBaseDados()
+{
+}
 
 int main()
 {
+    srand(time(NULL));
     cout << "-- Início do programa";
 
     int opcao;
@@ -59,7 +84,7 @@ int main()
 
             break;
         case 6:
-            cout<<"Saindo do programa...\n";
+            cout << "Saindo do programa...\n";
             break;
         }
 
