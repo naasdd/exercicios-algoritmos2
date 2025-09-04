@@ -18,13 +18,10 @@ struct Gado
     bool abate;
 };
 
+Gado arrayGados[2000];
+
 void criarDados()
 {
-
-    ofstream meu_arquivo;
-    meu_arquivo.open("ex6.txt", std::ios::trunc);
-
-    Gado arrayGados[2000];
 
     for (int i = 0; i < 2000; i++)
     {
@@ -40,37 +37,68 @@ void criarDados()
             temp.nasc.mes = rand() % 12;
         } while (temp.nasc.ano <= 2010 || temp.nasc.mes == 0);
 
-        meu_arquivo << temp.codigo << ",";
-        meu_arquivo << temp.leite << ",";
-        meu_arquivo << temp.alim << ",";
-        meu_arquivo << temp.nasc.ano << ",";
-        meu_arquivo << temp.nasc.mes << ",\n";
-
-        cout << temp.codigo << ",";
-        cout << temp.leite << ",";
-        cout << temp.alim << ",";
-        cout << temp.nasc.ano << ",";
-        cout << temp.nasc.mes << ",";
-        cout << endl;
+        if (2025 - temp.nasc.ano > 5 || temp.leite < 40 || (temp.leite <= 70 && temp.alim > 50))
+        {
+            temp.abate = 1;
+        }
+        else
+        {
+            temp.abate = 0;
+        }
 
         arrayGados[i] = temp;
     }
-    meu_arquivo.close();
 }
 
-void lerBaseDados()
+void leiteTotalSemanal()
 {
+    int tamArray = sizeof(arrayGados);
+    int tamanhoCada = sizeof(arrayGados[0]);
+
+    int lenght_arrayGados = tamArray / tamanhoCada;
+
+
+    int soma;
+    for (int i = 0; i < lenght_arrayGados + 1; i++)
+    {
+        soma = soma + arrayGados[i].leite;
+    }
+
+    cout << "\n Essa semana, a fazenda produziu " << soma << " litros de leite!";
+}
+
+void alimentoTotalSemanal()
+{
+
+    int tamArray = sizeof(arrayGados);
+    int tamanhoCada = sizeof(arrayGados[0]);
+
+    int lenght_arrayGados = tamArray / tamanhoCada;
+
+
+    int soma;
+    for (int i = 0; i < lenght_arrayGados + 1; i++)
+    {
+        soma = soma + arrayGados[i].alim;
+    }
+
+    cout << "\n Essa semana, os gados consumiram " << soma << " quilos de alimento!";
+
 }
 
 int main()
 {
     srand(time(NULL));
-    cout << "-- Início do programa -- \n";
+    system("CHCP 65001");
+
+    cout << "\n\n-- Início do programa --";
+
     criarDados();
+
     int opcao;
     do
     {
-        cout << "1 - Quantidade de leite produzido na semana\n";
+        cout << "\n\n1 - Quantidade de leite produzido na semana\n";
         cout << "2 - Alimento total que sera consumido por semana\n";
         cout << "3 - Quantidade total de leite que vai ser produzido na semana apos o abate\n";
         cout << "4 - Alimento que sera consumido por semana apos o abate\n";
@@ -83,13 +111,13 @@ int main()
         switch (opcao)
         {
         case 1:
-
+            leiteTotalSemanal();
             break;
         case 2:
-
+            alimentoTotalSemanal();
             break;
         case 3:
-
+            
             break;
         case 4:
 
