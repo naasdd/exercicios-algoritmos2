@@ -20,15 +20,17 @@ struct Gado
 
 void criarDados()
 {
+
     ofstream meu_arquivo;
-    meu_arquivo.open("ex6.txt");
+    meu_arquivo.open("ex6.txt", std::ios::trunc);
+
     Gado arrayGados[2000];
 
     for (int i = 0; i < 2000; i++)
     {
         Gado temp;
 
-        temp.codigo = rand() % 5000;
+        temp.codigo = i + 1;
         temp.leite = rand() % 100;
         temp.alim = rand() % 100;
 
@@ -54,7 +56,6 @@ void criarDados()
         arrayGados[i] = temp;
     }
     meu_arquivo.close();
-    cout << "Dados gerados e gravados em ex6.txt";
 }
 
 void lerBaseDados()
@@ -65,7 +66,7 @@ int main()
 {
     srand(time(NULL));
     cout << "-- Início do programa -- \n";
-
+    criarDados();
     int opcao;
     do
     {
@@ -82,7 +83,7 @@ int main()
         switch (opcao)
         {
         case 1:
-            criarDados();
+
             break;
         case 2:
 
