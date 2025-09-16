@@ -4,20 +4,24 @@ using namespace std;
 
 int potencia(int base, int expoente, int resultado)
 {
-    if (expoente > 1)
+    if (expoente < 0)
     {
-        resultado = resultado * base;
-        resultado = return potencia(base, expoente - 1, resultado);
+        cout << "\nErro catastrófico\n";
     }
+
     if (expoente == 1)
     {
         return resultado;
     }
+
     if (expoente == 0)
     {
         resultado = 1;
         return resultado;
     }
+
+    resultado = (base * potencia(base, expoente - 1, resultado));
+    return resultado;
 }
 
 int main()
@@ -27,11 +31,12 @@ int main()
     int base, expoente;
     cout << "Insira o valor da base: ";
     cin >> base;
-    cout << "\n Insira o valor do expoente: ";
+    cout << "\nInsira o valor do expoente: ";
     cin >> expoente;
 
     int resultado = base;
-    potencia(base, expoente, resultado);
+    resultado = potencia(base, expoente, resultado);
+    cout << "\nResultado: " << resultado << endl;
 
     return 0;
 }
