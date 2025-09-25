@@ -7,13 +7,16 @@ using namespace std;
 
 int main()
 {
-    int* array;
-    
-    for(int i; i < 5; i++){
-        
+    int *array;
 
+    for (int i = 0; i < 5; i++)
+    {
+        array = (int *)malloc(sizeof(array) + 1);
+        *array[i] = i;
+        cout << "\nArray[i] = " << array[i] << endl;
     }
-    
+
+    cout << *array << endl;
 
     return 0;
 }
