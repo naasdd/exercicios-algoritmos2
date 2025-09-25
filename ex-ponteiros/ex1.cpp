@@ -1,16 +1,23 @@
 #include <iostream>
-#include <stdio.h>
 
 using namespace std;
 
+// codigozinho besta só pra pegar a sintaxe e o básico de ponteiros, nem é exercicio
+
 int main()
 {
-    struct DATA
-    {
-        string dia;
-    };
+    int *p1;
+    int x = 5;
+    int teste;
 
-    cout << sizeof(DATA) << endl;
+    p1 = &x;
+
+    x = 1;
+
+
+    cout << "\np1 = " << p1 << endl;
+    cout << "\nX = " << &x << endl;
+    cout << "\nteste  = " << &teste << endl;
 
     return 0;
 }
