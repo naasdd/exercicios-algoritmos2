@@ -7,7 +7,12 @@ using namespace std;
 
 int main()
 {
+    int* array;
     
+    for(int i; i < 5; i++){
+        
+
+    }
     
 
     return 0;
