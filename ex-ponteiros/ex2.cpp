@@ -7,20 +7,18 @@ using namespace std;
 
 int main()
 {
-    int *array = new int;
-
-    *array = 1;
+    int *p1 = new int[5];
 
     for (int i = 0; i < 5; i++)
     {
-        
-        
-        array = (int *)malloc(sizeof(array) + 1
-        *array[i] = i;
-        cout << "\nArray[i] = " << array[i] << endl;
+        p1[i] = i;
+        cout << "p1[i] = " << p1[i] << endl;
     }
+        cout << "p1 = " << p1 << endl;
 
-    cout << *array << endl;
+    
+
+
 
     return 0;
 }
