@@ -7,18 +7,23 @@ using namespace std;
 
 int main()
 {
-    int *p1 = new int[5];
+    int TAM = 5;
 
-    for (int i = 0; i < 5; i++)
+    int *p1 = new int[TAM];
+
+    for (int i = 0; i < TAM; i++)
     {
         p1[i] = i;
         cout << "p1[i] = " << p1[i] << endl;
     }
-        cout << "p1 = " << p1 << endl;
+    cout << "p1 = " << p1 << endl;
 
+    int *temp = p1;
+
+    cout << "temp = " << temp << endl;
+
+    // aqui era pra eu prosseguir a fazer um novo array maior, mas pelo
+    // visto é bem complicado de fazer assim em c++
     
-
-
-
     return 0;
 }
