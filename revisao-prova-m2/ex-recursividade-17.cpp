@@ -48,7 +48,7 @@ void displayFinal(int userInput)
 int main()
 {
     system("chcp 65001");
-    cout << "\n-- Transformar número inteiro em binário --\n\n";
+    cout << "\n- Transformar número inteiro em binário \n\n";
 
     int userInput;
     cout << "Digite um número inteiro positivo: ";
