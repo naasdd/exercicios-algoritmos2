@@ -27,7 +27,7 @@ int divisao(int userInput)
 
 bool validarEntrada(int userInput)
 {
-    if (userInput < 0)
+    if (userInput < 0 || userInput > 2000000000)
     {
         return false;
     }
