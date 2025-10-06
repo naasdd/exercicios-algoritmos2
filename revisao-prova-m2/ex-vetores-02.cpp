@@ -51,48 +51,68 @@ int main()
         delete[] temp;
     };
 
+    cout << "Array geral = [";
     exibirVetor(userArray, tamanho);
+    cout << "]" << endl;
 
     int qtdPares = 0;
     int qtdImpares = 0;
-    int *arrayPares = nullptr;
-    int *arrayImpares = nullptr;
+    int *arrayPares = new int;
+    int *arrayImpares = new int;
 
     for (int i = 0; i < tamanho; i++)
     {
+
         if (userArray[i] % 2 == 0)
         {
             qtdPares += 1;
             int *temp = arrayPares;
             arrayPares = new int[qtdPares];
-            for (int i = 0; i < qtdPares; i++)
+
+            arrayPares[qtdPares - 1] = userArray[i];
+
+            if (qtdPares > 1)
             {
-                cout << "\nchegou ate aqui" << endl;
-                arrayPares[i] = temp[i];
+                for (int j = 0; j < qtdPares - 1; j++)
+                {
+                    arrayPares[j] = temp[j];
+                }
             }
-            arrayPares[qtdPares] = userArray[i];
+
             delete[] temp;
         }
+
         else if (userArray[i] % 2 == 1)
         {
             qtdImpares += 1;
             int *temp = arrayImpares;
             arrayImpares = new int[qtdImpares];
-            for (int i = 0; i < qtdImpares; i++)
+
+            arrayImpares[qtdImpares - 1] = userArray[i];
+
+            if (qtdImpares > 1)
             {
-                arrayImpares[i] = temp[i];
+                for (int j = 0; j < qtdImpares - 1
+                    ; j++)
+                {
+                    arrayImpares[j] = temp[j];
+                }
             }
-            arrayImpares[qtdImpares] = userArray[i];
+
             delete[] temp;
         }
     }
 
     cout << endl;
-    cout << endl;
-    exibirVetor(arrayPares, tamanho);
-    cout << endl;
-    cout << endl;
-    exibirVetor(arrayImpares, tamanho);
 
+    cout << "Array pares = [";
+    exibirVetor(arrayPares, qtdPares);
+    cout << "]" << endl;
+
+    cout << "Array impares = [";
+    exibirVetor(arrayImpares, qtdImpares);
+    cout << "]" << endl;
+
+    // cout << "\nchegou ate aqui" << endl;
     return 0;
 }
